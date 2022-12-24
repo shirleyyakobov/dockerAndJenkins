@@ -1,20 +1,11 @@
 pipeline{
-    agent any 
+    agent {
+        docker {image:'node:16.13.1-alpine'}
+    }
     stages{
-        stage("test"){
+        stage('Test'){
             steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+                echo 'node --version'
             }
         }
     }
